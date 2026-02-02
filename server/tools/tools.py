@@ -2,7 +2,24 @@
 This module contains tools for managing Trello boards, lists, cards, and workspaces.
 """
 
-from server.tools import attachment, board, card, checklist, comment, label, list, member, webhook, workspace
+from server.tools import (
+    advanced_card,
+    analytics,
+    attachment,
+    batch,
+    board,
+    card,
+    checklist,
+    comment,
+    custom_field,
+    export,
+    label,
+    list,
+    member,
+    search,
+    webhook,
+    workspace
+)
 
 
 def register_tools(mcp):
@@ -86,3 +103,44 @@ def register_tools(mcp):
     mcp.add_tool(workspace.create_workspace)
     mcp.add_tool(workspace.update_workspace)
     mcp.add_tool(workspace.delete_workspace)
+
+    # Custom Field Tools (Tier 2)
+    mcp.add_tool(custom_field.get_board_custom_fields)
+    mcp.add_tool(custom_field.create_custom_field)
+    mcp.add_tool(custom_field.update_custom_field)
+    mcp.add_tool(custom_field.delete_custom_field)
+    mcp.add_tool(custom_field.get_card_custom_field_values)
+    mcp.add_tool(custom_field.set_custom_field_value_checkbox)
+    mcp.add_tool(custom_field.set_custom_field_value_text)
+    mcp.add_tool(custom_field.set_custom_field_value_number)
+    mcp.add_tool(custom_field.set_custom_field_value_date)
+    mcp.add_tool(custom_field.set_custom_field_value_list)
+    mcp.add_tool(custom_field.add_custom_field_option)
+    mcp.add_tool(custom_field.update_custom_field_option)
+    mcp.add_tool(custom_field.delete_custom_field_option)
+
+    # Search Tools (Tier 2)
+    mcp.add_tool(search.search_trello)
+    mcp.add_tool(search.search_members)
+
+    # Batch Tools (Tier 2)
+    mcp.add_tool(batch.batch_get_resources)
+
+    # Export & Template Tools (Tier 2/3)
+    mcp.add_tool(export.export_board)
+    mcp.add_tool(export.list_organization_exports)
+    mcp.add_tool(export.create_organization_export)
+    mcp.add_tool(export.create_board_from_template)
+
+    # Advanced Card Tools (Tier 2)
+    mcp.add_tool(advanced_card.set_card_due_date)
+    mcp.add_tool(advanced_card.set_card_due_complete)
+    mcp.add_tool(advanced_card.subscribe_to_card)
+    mcp.add_tool(advanced_card.unsubscribe_from_card)
+    mcp.add_tool(advanced_card.vote_on_card)
+    mcp.add_tool(advanced_card.remove_vote_from_card)
+    mcp.add_tool(advanced_card.set_card_start_date)
+
+    # Analytics Tools (Tier 3)
+    mcp.add_tool(analytics.get_board_statistics)
+    mcp.add_tool(analytics.get_card_cycle_time)

@@ -1,6 +1,7 @@
 from typing import List, Optional
 
 from pydantic import BaseModel
+from server.models.custom_field import TrelloCustomField, TrelloCustomFieldItem, TrelloCustomFieldOption
 
 
 class TrelloBoard(BaseModel):
